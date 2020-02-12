@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Chowol</title>
     
+    <!--파비콘-->
+    <link rel="icon" href="logo02.jpg">
+    
     <!--웹 폰트-->
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
@@ -15,31 +18,102 @@
         #header {width: 100%; height: 112px; }
         #header .header_icon  img {display: block; margin: 0 auto;}
         
+        /*모바일메뉴*/
+        #mNav {display: none; position: absolute; top: 0px; right: 14px;}
+        .ham {display: block; width: 25px; height: 10px; padding-top: 10px 5px; padding: 15px 10px 10px 10px;}
+        .ham span {position: relative; display: block; width: 25px; height: 4px; background: #ff99aa; }
+        .ham span:before {
+            content: '';
+            width: 25px; height: 4px; background: #ff99aa;
+            position: absolute; left: 0; bottom: -7px;
+        }
+         .ham span:after {
+            content: '';
+            width: 25px; height: 4px; background: #ff99aa;
+            position: absolute; left: 0; top: -7px;
+        }
+        
         /*메뉴*/
-        #nav {width: 100%; height: 58px; display: block; margin: 0 auto;}
-        #nav ul { list-style-type: none; text-align: center;}
-        #nav li {display: inline; font-family: 'Merriweather', serif;}
-        #nav li a {padding: 30px; font-size: 30px; color: black; text-decoration: none; }
-        #nav li a:hover {color: #ff99aa;}
+        .nav { width: 100%; height: 58px;  text-align: center; }
+        .nav ul { list-style-type: none; text-align: center; }
+        .nav li {position: relative; float: left; width: 32%;  text-align: center; font-family: 'Merriweather', serif;}
+        .nav li a {display: block; padding: 10px; font-size: 30px; color: black; text-decoration: none; }
+        .nav li a:hover {color: #ff99aa;}
+        
+        .nav li ul.submenu {display: none; position: absolute; left: 65px; top: 44px;}
+        .nav li ul.submenu li {width: 100%;}
+        .nav li ul.submenu li a {font-size: 25px;}
+       
+        
+        /*모바일 메인이미지*/
+        #mImg {display: none; width: 100%; height: 718px;}
+        #mImg img { width: 100%; height: 718px;}
         
         /*레이아웃(메인이미지)*/
-        article {width: 100%; height: 718px;}
-        article img {width: 100%; height: 718px;}
+        #mian_img {width: 100%; height: 718px;}
+        #mian_img img {width: 100%; height: 718px;}
+        
+        /*모바일 컨텐츠*/
+        #mC {display: none; width: 100%; height: 1210px;}
+        #mC img {width: 100%; height: 1210px;}
         
         /*컨텐츠*/
-        section {width: 100%; height: 650px;}
-        h1 {font-family: 'Noto Serif KR', serif; font-size: 20px; text-align: center;}
+        #mian_c {width: 100%; height: 1210px;}
+        #mian_c img {width: 100%; height: 1210px;}
         
+        /*모바일 푸터*/
+        #mFooter {width: 100%; height: 220px; list-style-type: none; }
+        #mFooter li {text-align: center;}
+        #mFooter li a {font-size: 30px; color: #555; font-family: 'Merriweather', serif;text-decoration: none; }
+        #mFooter li a:hover {color: #ff99aa;}
+ 
         /*푸터*/
-        footer {width: 100%; height: 110px;}
-        footer ul {list-style-type: none; text-align: right;}
-        footer li {display: inline; font-family: 'Merriweather', serif;}
-        footer li a {padding: 25px; font-size: 30px; color: #555; text-decoration: none; }
-        footer li a:hover {color: black;}
+        #footer {width: 100%; height: 220px;}
+        #footer ul {list-style-type: none; text-align: right;}
+        #footer li {display: inline; font-family: 'Merriweather', serif;}
+        #footer li a {padding: 25px; font-size: 30px; color: #555; text-decoration: none; }
+        #footer li a:hover {color: black;}
         
         /*미디어쿼리(반응형)*/
         @media (max-width: 1020px){
             #wrap {width: 100%;} 
+            
+            
+           
+        }
+        
+        
+        @media (max-width: 960px){
+             
+          
+        }
+    
+        
+         @media (max-width: 768px){
+             
+             #header {display: none;}
+             #header .header_icon  img  {display: none; }
+             .nav {display: none;} 
+             #mNav {display: none;}
+             
+        
+             #mImg {display: block;}
+             #mian_img {display: none;}
+             
+             #mC {display: block;}
+             #mian_c {display: none;}
+             
+             #mFooter {display: block;}
+             #footer ul {display: none;}
+             
+        }
+        
+         @media (max-width: 480px){
+            
+        }
+        
+         @media (max-width: 320px){
+             
         }
     </style> 
 </head>
@@ -52,43 +126,55 @@
        </header>
        <!--헤더영역-->
        
-       <nav id="nav">
+       <nav id="mNav">
+           <h2 class="ir_so"></h2>
+            <a href="" class="ham"><span></span></a>
+       </nav>
+       <nav class="nav">
            <ul>
-               <li><a href="">Home</a></li>
-               <li><a href="">Galley</a></li>
-               <li><a href="">Contact</a></li>
+               <li><a href="">HOME</a>
+                   <ul class="submenu">
+                       <li><a href=""></a></li>
+                   </ul>
+               </li>
+               <li><a href="">GALLERY</a>
+                   <ul class="submenu">
+                       <li><a href="">2019</a></li>
+                       <li><a href="">2020</a></li>
+                   </ul>
+               </li>
+               <li><a href="">CONTACT</a>
+                   <ul class="submenu">
+                       <li><a href=""></a></li>
+                   </ul>
+               </li>
            </ul>
        </nav>
        <!--메뉴영역-->
        
-       <article>
+       <article id="mImg">
+           <img src="768mainimg.jpg" alt="">
+       </article>
+       
+       <article id="mian_img">
             <img src="mainimg.jpg" alt="">
        </article>
        <!--메인이미지-->
        
-       <section>
-           <h1>
-               <p>인간이 색을 볼수 있는 원리는 한 물체에  태양빛이 반사되어 우리의 눈으로 들어와<br>
-붉은색, 초록색, 파란색을 구분해 그 정보를 뇌로 전달해 느낄수 있는 것입니다. 결국<br>
-우리늬 뇌를 거쳐 색을 받아드릴수 있는것이죠.</p>
-               <p> 색을 구분하는 것이 둔한 색약인 사람들과 색을 아에 구분 하지 못하는 색맹인 사람들은<br>
-이 세상을 어떤 시각으로 또 어떤 색으로 바라 볼까요 .<br>
- 색 이라는 기준은 아주 모호 합니다. 만약 노란색과 파란색의 물감으로 그라데이션되어<br>
-있는 그림을 그린다고 칩시다. 그럼 어디서부터 어디까지가 노란색이고 어디서부터 어디<br>
-까지가 파란색이라고 단정지을수 있을 까요 저는 그 기준이 모호 하다고 생각 합니다. </p>
-               <p>저는 색을 잘 다루고 빛을 잘 이해하는 멋진 화가가 아닙니다. 제가 바라는 것은 단지 저의<br>
-그림을 색과 빛이 아닌 감정으로 바라봐주길 바랍니다. 제가 어떤 부분에 어떤 색을 썼다는<br>
-것은 아무의미가 없습니다 어떠한 규칙도 없습니다. 단지 저는 제가 느끼는 감정과 생각을<br>
-그대로 그림에 담고자 노력했습니다. 저는 제 감정과 생각을 그림을 통해 세상에 전달하고<br>
-싶은 사람입니다. 그렇지만 만약 제 그림을 보고 제가 의도하지 않은 또다른 감정을 느끼셨<br>
-다고 해도 저는 슬프거나 우울하지 않습니다 저의 감정을 전달하는데 있어서 실패 했다고도<br>
-보지 않습니다. 어떠한 영감을 받고 하나의 그림을 그리고 그 그림을 많은 사람이 봐주고 또<br>
-그사람들이 그림을 통해 무언가를 느낀다면 저는 더할 나위 없이 행복할 것입니다.</p>
-           </h1>
+       <section id="mC">
+           <img src="768c.jpg" alt="">
+       </section>
+       <section id="mian_c">
+             <img src="c.jpg" alt="">  
+  
        </section>
        <!--컨텐츠-->
-       
-       <footer>
+       <footer id="mFooter">
+           <li><a href="">NEXTPAGE</a></li>
+       </footer>
+       <footer id="footer">
+          
+    
            <ul>
                <li><a href="">Facebook</a></li>
                <li><a href="">Instagram</a></li>
@@ -96,5 +182,26 @@
        </footer>
    </div>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(".nav > ul > li ").mouseover(function(){
+            $(this).find(".submenu").stop().slideDown(200);
+        });
+        $(".nav > ul > li ").mouseout(function(){
+            $(this).find(".submenu").stop().slideUp(200);
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
