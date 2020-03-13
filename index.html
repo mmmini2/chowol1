@@ -3,48 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Chowol</title>
-    
-    <!--파비콘-->
+     <!--파비콘-->
     <link rel="icon" href="logo02.jpg">
-    
-    <!--웹 폰트-->
-    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     
     <style>
-        #wrap{width: 1200px; margin: 0 auto;}
+
+        a {text-decoration: none; color: black;}
+        li{list-style-type: none;}
         
-        /*헤더*/
-        #header {width: 100%; height: 112px; background-color: white;}
-        #header .header_icon  img {display: block; margin: 0 auto;}
-        
-        /*모바일메뉴*/
-        #mNav {display: none; position: absolute; top: 0px; right: 14px;}
-        .ham {display: block; width: 25px; height: 10px; padding-top: 10px 5px; padding: 15px 10px 10px 10px;}
-        .ham span {position: relative; display: block; width: 25px; height: 4px; background: #ff99aa; }
-        .ham span:before {
-            content: '';
-            width: 25px; height: 4px; background: #ff99aa;
-            position: absolute; left: 0; bottom: -7px;
+        body {
+            height: 2000px;
+            font-size: 25px;
+            font-family: 'Raleway', sans-serif;
         }
-         .ham span:after {
-            content: '';
-            width: 25px; height: 4px; background: #ff99aa;
-            position: absolute; left: 0; top: -7px;
+        body.static{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
         
-        /*메뉴*/
-        .nav { width: 100%; height: 70px;  text-align: center; background-color: rgba(255,255,255,0.5);}
-        .nav ul { list-style-type: none; text-align: center; }
-        .nav li {position: relative; float: left; width: 32%;  text-align: center; font-family: 'Merriweather', serif;}
-        .nav li a {display: block; padding: 10px; font-size: 30px; color: #555; text-decoration: none; }
-        .nav li a:hover {color: #FFB6C1;}
+        .wrapper{width: 1200px; margin: 0 auto;}
         
-        .nav li ul.submenu {display: none; position: absolute; left: 65px; top: 44px; }
-        .nav li ul.submenu li {width: 100%;}
-        .nav li ul.submenu li a {font-size: 25px;  }
-        
-        /*헤더부분 스크롤방지
+        .base {width: 100%; height: 100%;}
+
+        #header {
+            position: relative;
+            height: 60px;
+            background-color: rgba(o,o,o,o.1);
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }  
+       /*헤더부분 스크롤방지
         70px 내려오면 fixed를 추가합니다.*/
         #header.fixed {
             position: fixed;
@@ -53,155 +43,135 @@
             width: 100%;
         }
         
-        /*모바일 메인이미지*/
-        #mImg {display: none; width: 100%; height: 718px;}
-        #mImg img { width: 100%; height: 718px;}
+        #desktop {
+            text-align: center;
+        }
+        #desktop li {
+            display: inline-block;
+        }
+        #desktop li a {
+            display: block; padding: 0 30px; line-height: 60px;
+            font-size: 16px;
+        }
+        #desktop li a:hover {
+            color: #888;
+        }
         
-        /*레이아웃(메인이미지)*/
-        #mian_img {width: 100%; height: 718px;}
-        #mian_img img {width: 100%; height: 718px;}
         
-        /*모바일 컨텐츠*/
-        #mC {display: none; width: 100%; height: 1210px;}
-        #mC img {width: 100%; height: 1210px;}
+        #mobile {
+            position: fixed;
+            left: -299px;
+            top: 0;
+            width: 240px;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            transition: left o.4s;
+            padding: 100px 0 0  50px;
+        }
+        #mobile.active {
+            left: 0;
+        }
+        #mobile a {
+            display: block;
+            line-height: 60px;
+            font-size: 16px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        #mobile li a:hover {
+            color: white;
+        }
         
-        /*컨텐츠*/
-        #mian_c {width: 100%; height: 1210px;}
-        #mian_c img {width: 100%; height: 1210px;}
-        
-        /*모바일 푸터*/
-        #mFooter {display: none; width: 100%; height: 220px; list-style-type: none; }
-        #mFooter li {text-align: center;}
-        #mFooter li a {font-size: 30px; color: #555; font-family: 'Merriweather', serif;text-decoration: none; }
-        #mFooter li a:hover {color: #ff99aa;}
- 
-        /*푸터*/
-        #footer {width: 100%; height: 220px;}
-        #footer ul {list-style-type: none; text-align: right;}
-        #footer li {display: inline; font-family: 'Merriweather', serif;}
-        #footer li a {padding: 25px; font-size: 30px; color: #555; text-decoration: none; }
-        #footer li a:hover {color: black;}
-        
-        /*미디어쿼리(반응형)*/
-        @media screen and (max-width: 1020px){
-            #wrap {width: 100%;} 
-            
-            
+        #header .tab {
+            display: none;
+            position: absolute;
+            left: 10px;
+            top: 1px;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
            
         }
-        
-     
-        
-         @media screen and (max-width: 767px){
-             
+        #header .tab span {
             
-             #mNav {display: none;}
-             
-        
-             #mImg {display: block;}
-             #mian_img {display: none;}
-             
-        
-             /*#mian_c {display: none;}*/
-             
-            
-             
-             
-    
-        
-        @media screen and (min-width:768px) and (max-width: 991px){
-          
-             #mNav {display: none;}
-             
-        
-             #mImg {display: block;}
-             #mian_img {display: none;}
-             
-        
-             /*#mian_c {display: none;}*/
-             
-             
-             
-            
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            text-indent: -9999px;
+           
+
         }
-    </style> 
+          
+        .dim {
+            display: none;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .dim.dctive {
+            display: block;
+        }
+        
+        
+       /* @media only screen and (max-width: 760px) {
+            #desktop {
+                display: none;
+            }
+            #header .tab{
+                display: block;
+            }
+        }*/
+      
+    
+    </style>
+    
 </head>
 <body>
-   <div id="wrap">
-       <header id="header">
-        <div class="header_icon">
-            <img src="logo02.jpg" alt="logo">
-        </div>
+
+    <div class="wrapper">
        
-       
-       
-       <nav id="mNav">
-           <h2 class="ir_so"></h2>
-            <a href="" class="ham"><span></span></a>
-       </nav>
-       <nav class="nav">
-           <ul>
-               <li><a href="index.html">HOME</a>
-                   <ul class="submenu">
-                       <li><a href=""></a></li>
-                   </ul>
-               </li>
-               <li><a href="gallery2019.html">GALLERY</a>
-                   <ul class="submenu">
-                       <li><a href="gallery2019.html">2019</a></li>
-                       <li><a href="gallery2020.html">2020</a></li>
-                   </ul>
-               </li>
-               <li><a href="mail.html">CONTACT</a>
-                   <ul class="submenu">
-                       <li><a href=""></a></li>
-                   </ul>
-               </li>
-           </ul>
-       </nav>
-       </header>
-       <!--메뉴영역-->
-       <!--헤더영역-->
-       
-       <article id="mImg">
-           <img src="768mainimg.jpg" alt="">
-       </article>
-       
-       <article id="mian_img">
-            <img src="mainimg.jpg" alt="">
-       </article>
-       <!--메인이미지-->
-       
-       <section id="mC">
-           <img src="768c.jpg" alt="">
-       </section>
-       <!--<section id="mian_c">
-             <img src="c.jpg" alt="">  
-  
-       </section>-->
-       <!--컨텐츠-->
-     
-       <footer id="footer">
-          
+        <header id="header">
+            <nav id="desktop">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="2019.html">2019</a></li>
+                    <li><a href="2020.html">2020</a></li>
+                    <li><a href="drawing.html">DRAWING</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <nav id="mobile">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="2019.html">2019</a></li>
+                    <li><a href="2020.html">2020</a></li>
+                    <li><a href="drawing.html">DRAWING</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+            <a class="tab" href=""><span>tab</span><img src="spanimg.jpg" alt=""></a>
+        </header>
+        <img class="base" src="base02.jpg" alt="">
+        <div class="dim"></div>
+        
     
-           <ul>
-               
-               <li><a href="https://www.instagram.com/chowol_kim" target="_blank">Instagram</a></li>
-           </ul>
-       </footer>
-   </div>
+   
+        
+        <div class="img">
+     
+        </div>
+    </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
-        $(".nav > ul > li ").mouseover(function(){
-            $(this).find(".submenu").stop().slideDown(200);
-        });
-        $(".nav > ul > li ").mouseout(function(){
-            $(this).find(".submenu").stop().slideUp(200);
-        });
-        
-        
-        //스크롤 할때 고정
+
+                   
+ //스크롤 할때 고정
     $(function(){
         
     
@@ -221,17 +191,6 @@
         });
     });
     </script>
+    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
